@@ -41,7 +41,7 @@ public class PlayerLifeStatsController : MonoBehaviour
     [SerializeField] Text _Pulse;
     [SerializeField] Text _Endurance;
     [SerializeField] Text _EyeEndurance;
-
+    [SerializeField] bool showDebug = false;
     private void Start()
     {
         _eyeHandler = FindObjectOfType<Blinking>().GetComponent<Blinking>();    
@@ -77,12 +77,15 @@ public class PlayerLifeStatsController : MonoBehaviour
         _enduranceLostSpeed = _breathHandler.EnduranceLostSpeed;
         _enduranceRestoreSpeed = _breathHandler.EnduranceRestoreSpeed;
         _maxEndurance = _breathHandler.MaxEndurance;
-
-        _Stress.text = "Stress:" + _stress;
-        _StressStatus.text = "Stress Status:" + _stressHandler.StressStatus;
-        _Pulse.text = "Pulse:" + _heartBeat;
-        _EyeEndurance.text = "Eye Endurance:" + _eyeEndurance;
-        _Endurance.text = "Endurance:" + _endurance;
+        if (showDebug)
+        {
+            _Stress.text = "Stress:" + _stress;
+            _StressStatus.text = "Stress Status:" + _stressHandler.StressStatus;
+            _Pulse.text = "Pulse:" + _heartBeat;
+            _EyeEndurance.text = "Eye Endurance:" + _eyeEndurance;
+            _Endurance.text = "Endurance:" + _endurance;
+        }
+      
     }
     private void FixedUpdate()
     {
